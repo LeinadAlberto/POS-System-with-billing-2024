@@ -10,62 +10,30 @@
         <link rel="stylesheet" href="assets/plugins/fontawesome-free/css/all.min.css">
         <!-- icheck bootstrap -->
         <link rel="stylesheet" href="assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+        <!-- DataTables -->
+        <link rel="stylesheet" href="assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+        <link rel="stylesheet" href="assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+        <link rel="stylesheet" href="assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
         <!-- Theme style -->
         <link rel="stylesheet" href="assets/dist/css/adminlte.min.css">
         <!-- Icon Logo -->
         <link rel="shortcut icon" href="assets/dist/img/Logo_POS.png" type="image/x-icon">
     </head>
 
-    <body class="hold-transition login-page">
-        <div class="login-box">
-            <div class="card">
-                <div class="card-body login-card-body">
-                    <div class="login-logo">
-                        <img src="assets/dist/img/logo_login.png" alt="logo login" width="200">
-                    </div> <!-- /.login-logo -->
+<?php 
 
-                    <form action="" method="post">
-                        <!-- Email -->
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Usuario" name="usuario">
-                            <div class="input-group-append">
-                                <div class="input-group-text">
-                                    <span class="fas fa-user"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Password -->
-                        <div class="input-group mb-3">
-                            <input type="password" class="form-control" placeholder="Password" name="password">
-                            <div class="input-group-append">
-                                <div class="input-group-text">
-                                    <span class="fas fa-lock"></span>
-                                </div>
-                            </div>
-                        </div>
+    if (isset($_GET["ruta"])) {
 
-                        <div class="row">
-                            <div class="col-8">
-                            </div><!-- /.col -->
-                            <div class="col-4">
-                                <button type="submit" class="btn btn-primary btn-block">Acceder</button>
-                            </div><!-- /.col -->
-                        </div>
+        if ($_GET["ruta"] == "inicio" || $_GET["ruta"] == "VUsuario") {
+            include "asideMenu.php";
+            include $_GET["ruta"] . ".php";
+            include "footer.php";
+        }
 
-                        <?php 
-                            $login = new ControladorUsuario();
-                            $login->ctrIngresoUsuario();
-                        ?>
-                    </form>
-                </div><!-- /.login-card-body -->
-            </div><!-- /.card -->
-        </div><!-- /.login-box -->
+    } else {
+        include "vista/login.php";
+    }
 
-        <!-- jQuery -->
-        <script src="assets/plugins/jquery/jquery.min.js"></script>
-        <!-- Bootstrap 4 -->
-        <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <!-- AdminLTE App -->
-        <script src="assets/dist/js/adminlte.min.js"></script>
-    </body>
+?>
+
 </html>

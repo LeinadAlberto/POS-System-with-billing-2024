@@ -12,8 +12,18 @@ class ControladorUsuario
             /* var_dump($resultado); */
 
             if ($resultado["login_usuario"] == $usuario && $resultado["password"] == $password && $resultado["estado" == 1]) {
-                echo "Acceso Correcto";
+                
+                echo "<script>
+                    window.location = 'inicio';
+                </script>";
             }
         }
+    }
+
+    static public function ctrInfoUsuarios()
+    {
+        $respuesta = ModeloUsuario::mdlInfoUsuarios();
+
+        return $respuesta;
     }
 }
