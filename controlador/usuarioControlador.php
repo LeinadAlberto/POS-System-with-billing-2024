@@ -23,16 +23,28 @@ class ControladorUsuario
 
             /* var_dump($resultado); */
 
-            if ($resultado["login_usuario"] == $usuario && $resultado["password"] == $password && $resultado["estado" == 1]) {
+            /* En el condicional se usa password_verify (https://www.php.net/manual/en/function.password-verify.php) */
+            if ($resultado["login_usuario"] == $usuario && password_verify($password, $resultado["password"]) && $resultado["estado" == 1]) {
                 /* Creando variables de sesión */
                 $_SESSION["ingreso"] = "ok";
                 $_SESSION["loginUsuario"] = $resultado["login_usuario"];
                 $_SESSION["perfil"] = $resultado["perfil"];
                 $_SESSION["idUsuario"] = $resultado["id_usuario"];
 
-                echo "<script>
-                    window.location = 'inicio';
-                </script>";
+                date_default_timezone_set("America/La_Paz");
+                $fecha = date("Y-m-d");
+                $hora = date("H-i-s");
+                $fechaHora = $fecha . " " . $hora;
+                $id = $resultado["id_usuario"];
+
+                $ultimoLogin = ModeloUsuario::mdlActualizarAcceso($fechaHora, $id);
+
+                if ($ultimoLogin == "ok") {
+                    echo "<script>
+                        window.location = 'inicio';
+                    </script>";
+                }
+
             }
         }
     }

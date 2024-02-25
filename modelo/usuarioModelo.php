@@ -46,4 +46,18 @@ class ModeloUsuario
         $stmt->close();
         $stmt->null;
     }
+
+    static public function mdlActualizarAcceso($fechaHora, $id)
+    {
+        $stmt = Conexion::conectar()->prepare("update usuario set ultimo_login = '$fechaHora' where id_usuario = '$id'");
+
+        if ($stmt->execute()) {
+            return "ok";
+        } else {
+            return "error";
+        }
+
+        $stmt->close();
+        $stmt->null;
+    }
 }
