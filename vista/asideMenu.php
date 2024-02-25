@@ -43,6 +43,7 @@
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- Usuarios -->
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-users"></i>
@@ -59,6 +60,13 @@
                                     </a>
                                 </li>
                             </ul>
+                        </li>
+                        <!-- Salir -->
+                        <li class="nav-item">
+                            <a href="salir" class="nav-link">
+                                <i class="fas fa-door-open nav-icon"></i>
+                                <p>Salir</p>
+                            </a>
                         </li>
                     </ul>
                 </nav>
