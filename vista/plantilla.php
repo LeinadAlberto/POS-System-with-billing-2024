@@ -1,3 +1,7 @@
+<?php 
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -25,6 +29,7 @@
     </head>
 
 <?php 
+if (isset($_SESSION["ingreso"]) && $_SESSION["ingreso"] == "ok") {
 
     if (isset($_GET["ruta"])) {
 
@@ -39,6 +44,10 @@
     } else {
         include "vista/login.php";
     }
+
+} else {
+    include "vista/login.php";
+}
 
 ?>
 
