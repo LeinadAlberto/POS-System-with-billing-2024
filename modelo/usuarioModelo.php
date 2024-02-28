@@ -60,4 +60,34 @@ class ModeloUsuario
         $stmt->close();
         $stmt->null;
     }
+
+    static public function mdlInfoUsuario($id)
+    {
+        $stmt = Conexion::conectar()->prepare("select * from usuario where id_usuario = '$id'");
+        $stmt->execute();
+
+        return $stmt->fetch();
+
+        $stmt->close();
+        $stmt->null;
+    }
+
+    static public function mdlEditUsuario($data)
+    {
+        $id = $data["id"];
+        $password = $data["password"];
+        $perfil = $data["perfil"];
+        $estado = $data["estado"];
+
+        $stmt = Conexion::conectar()->prepare("update usuario set password = '$password', perfil = '$perfil', estado = '$estado' where id_usuario = '$id'");
+
+        if ($stmt->execute()) {
+            return "ok";
+        } else {
+            return "error";
+        }
+
+        $stmt->close();
+        $stmt->null;
+    }
 }
