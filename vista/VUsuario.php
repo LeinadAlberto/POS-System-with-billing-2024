@@ -36,6 +36,7 @@
                                 <tbody>
                                     <?php
                                         $usuario = ControladorUsuario::ctrInfoUsuarios();
+                                        
                                         foreach($usuario as $value) {
                                     ?>
                                         <tr>

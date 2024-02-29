@@ -90,4 +90,18 @@ class ModeloUsuario
         $stmt->close();
         $stmt->null;
     }
+
+    static public function mdlEliUsuario($id)
+    {
+        $stmt = Conexion::conectar()->prepare("DELETE FROM usuario WHERE id_usuario = '$id'");
+
+        if ($stmt->execute()) {
+            return "ok";
+        } else {
+            return "error";
+        }
+
+        $stmt->close();
+        $stmt->null;
+    }
 }
