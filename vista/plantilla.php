@@ -35,7 +35,10 @@ if (isset($_SESSION["ingreso"]) && $_SESSION["ingreso"] == "ok") {
 
         if ($_GET["ruta"] == "inicio" || 
             $_GET["ruta"] == "salir" || 
-            $_GET["ruta"] == "VUsuario") {
+            $_GET["ruta"] == "VUsuario" ||
+            $_GET["ruta"] == "VCliente" ||
+            $_GET["ruta"] == "VProducto"
+            ) {
             include "asideMenu.php";
             include $_GET["ruta"] . ".php";
             include "footer.php";

@@ -61,6 +61,60 @@
                                 </li>
                             </ul>
                         </li>
+                        <!-- Clientes -->
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-handshake"></i>
+                                <p>
+                                    Clientes
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="VCliente" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Lista de clientes</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- Productos -->
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-boxes"></i>
+                                <p>
+                                    Productos
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="VProducto" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Lista de productos</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- Ventas -->
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-cash-register"></i>
+                                <p>
+                                    Ventas
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="VUsuario" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Emitir Factura</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                         <!-- Salir -->
                         <li class="nav-item">
                             <a href="salir" class="nav-link">

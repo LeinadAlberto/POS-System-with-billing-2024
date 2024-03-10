@@ -39,12 +39,24 @@
         
         <!-- Custom JS -->
         <script src="assets/js/usuario.js"></script>
+        <script src="assets/js/cliente.js"></script>
+        <script src="assets/js/producto.js"></script> 
+        <!-- <script src="assets/js/factura.js"></script> -->
 
 
         <!-- Estructura Modal -->
         <div class="modal fade" id="modal-default">
             <div class="modal-dialog">
                 <div class="modal-content" id="content-default">
+
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        <!-- Estructura Modal Large -->
+        <div class="modal fade" id="modal-lg">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content" id="content-lg">
 
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
