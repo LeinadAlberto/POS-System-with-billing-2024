@@ -8,6 +8,9 @@
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
+                <li class="nav-item nav-link">
+                    <span class="badge badge-danger" id="comunSiat">Desconectado</span>
+                </li>
             </ul>
 
             <!-- Right navbar links -->
@@ -93,6 +96,12 @@
                                     <a href="VProducto" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Lista de productos</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="SinCatalogos" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Sincronización catalogos</p>
                                     </a>
                                 </li>
                             </ul>

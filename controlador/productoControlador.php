@@ -15,6 +15,7 @@ if ( isset($ruta["query"]) ) {
 
 class ControladorProducto 
 {
+    /* Metodo para obtener todos los Productos */
     static public function ctrInfoProductos()
     {
         $respuesta = ModeloProducto::mdlInfoProductos();
@@ -22,60 +23,83 @@ class ControladorProducto
         return $respuesta;
     }
 
-    static public function ctrRegUsuario()
+    static public function ctrRegProducto()
     {
-        require "../modelo/usuarioModelo.php";
-
-        /* Encriptación con password_hash (https://www.php.net/manual/es/function.password-hash.php) */
-        $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+        require "../modelo/productoModelo.php";
+        /* Obtiene el archivo de imagen cargado de los datos del formulario ($_FILES) bajo la clave "imgProducto". */
+        $imagen = $_FILES["imgProducto"];
+        /* Obtiene el nombre de la imagen cargada en el formulario */
+        $imgNombre = $imagen["name"];
+        /* Obtiene la ruta temporal de la imagen cargada en el formulario */
+        $imgTmp = $imagen["tmp_name"];
+        /* Mueve el archivo de imagen cargado desde su ubicación temporal a un directorio designado 
+        para imágenes de productos ("assets/dist/img/productos/") con el nombre de archivo original */
+        move_uploaded_file($imgTmp, "../assets/dist/img/productos/" . $imgNombre);
 
         $data = array(
-            "loginUsuario" => $_POST["login"],
-            "password" => $password,
-            "perfil" => "Moderador"
+            "codProducto" => $_POST["codProducto"],
+            "codProductoSIN" => $_POST["codProductoSIN"],
+            "desProducto" => $_POST["desProducto"],
+            "preProducto" => $_POST["preProducto"],
+            "unidadMedida" => $_POST["unidadMedida"],
+            "unidadMedidaSIN" => $_POST["unidadMedidaSIN"],
+            "imgProducto" => $imgNombre
         );
 
-        $respuesta = ModeloUsuario::mdlRegUsuario($data);
+        $respuesta = ModeloProducto::mdlRegProducto($data);
 
         echo $respuesta;
     }
 
-    static public function ctrInfoUsuario($id)
+    static public function ctrInfoProducto($id)
     {
-        $respuesta = ModeloUsuario::mdlInfoUsuario($id);
+        $respuesta = ModeloProducto::mdlInfoProducto($id);
 
         return $respuesta;
     }
 
-    static public function ctrEditUsuario()
+    static public function ctrEditProducto()
     {
-        require "../modelo/usuarioModelo.php";
+        require "../modelo/productoModelo.php";
 
-        if ($_POST["password"] == $_POST["passActual"]) {
-            $password = $_POST["password"];
+        /* Obtiene el archivo de imagen cargado de los datos del formulario ($_FILES) bajo la clave "imgProducto". */
+        $imagen = $_FILES["imgProducto"];
+
+        if ($imagen["name"] == "") {
+            $imgNombre = $_POST["imgActual"];
         } else {
-            /* Encriptación con password_hash (https://www.php.net/manual/es/function.password-hash.php) */
-            $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+            /* Obtiene el nombre de la imagen cargada en el formulario */
+            $imgNombre = $imagen["name"];
+            /* Obtiene la ruta temporal de la imagen cargada en el formulario */
+            $imgTmp = $imagen["tmp_name"];
+            /* Mueve el archivo de imagen cargado desde su ubicación temporal a un directorio designado 
+            para imágenes de productos ("assets/dist/img/productos/") con el nombre de archivo original */
+            move_uploaded_file($imgTmp, "../assets/dist/img/productos/" . $imgNombre);
         }
 
         $data = array(
-            "id" => $_POST["idUsuario"], 
-            "password" => $password,
-            "perfil" => $_POST["perfil"],
+            "idProducto" => $_POST["idProducto"],
+            "codProductoSIN" => $_POST["codProductoSIN"],
+            "desProducto" => $_POST["desProducto"],
+            "preProducto" => $_POST["preProducto"],
+            "unidadMedida" => $_POST["unidadMedida"],
+            "unidadMedidaSIN" => $_POST["unidadMedidaSIN"],
+            "imgProducto" => $imgNombre,
             "estado" => $_POST["estado"]
         );
 
-        $respuesta = ModeloUsuario::mdlEditUsuario($data);
+        $respuesta = ModeloProducto::mdlEditProducto($data);
 
         echo $respuesta; 
     }
 
-    static public function ctrEliUsuario()
+    static public function ctrEliProducto()
     {
-        require "../modelo/usuarioModelo.php";
+        require "../modelo/productoModelo.php";
+
         $id = $_POST["id"];
 
-        $respuesta = ModeloUsuario::mdlEliUsuario($id);
+        $respuesta = ModeloProducto::mdlEliProducto($id);
 
         echo $respuesta;
     }

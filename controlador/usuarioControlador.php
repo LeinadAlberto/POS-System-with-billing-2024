@@ -110,6 +110,7 @@ class ControladorUsuario
     static public function ctrEliUsuario()
     {
         require "../modelo/usuarioModelo.php";
+        
         $id = $_POST["id"];
 
         $respuesta = ModeloUsuario::mdlEliUsuario($id);
